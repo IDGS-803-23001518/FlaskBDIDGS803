@@ -1,5 +1,6 @@
 {% extends "layout.html" %} 
 {% block container %}
+
 <br><br><br><br>
 <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default"><br><br>
 <a href="alumnos" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Alumnos</a><br><br>
@@ -27,86 +28,28 @@
             </tr>
         </thead>
         <tbody>
+            {% for alumn in Alumnos %}
             <tr class="bg-neutral-primary border-b border-default">
                 <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
-                    Mario Juan
+                    {{ alumn.nombre }}
                 </th>
-                <td class="px-6 py-4">
-                    Lopez
-                </td>
-                <td class="px-6 py-4">
-                    lopez@gmail.com
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-fg-brand hover:underline">Editar</a>
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-fg-brand hover:underline">Detalles</a>
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-fg-brand hover:underline">Eliminar</a>
-                </td>
-            </tr>
-            <tr class="bg-neutral-primary border-b border-default">
                 <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
-                    Juan
+                    {{ alumn.aPaterno }}
                 </th>
-                <td class="px-6 py-4">
-                    Ramirez
-                </td>
-                <td class="px-6 py-4">
-                    ramirez@gmail.com
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-fg-brand hover:underline">Editar</a>
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-fg-brand hover:underline">Detalles</a>
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-fg-brand hover:underline">Eliminar</a>
-                </td>
-            </tr>
-            <tr class="bg-neutral-primary">
                 <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
-                    Guadalupe Veronica
+                    {{ alumn.email }}
                 </th>
                 <td class="px-6 py-4">
-                    Macias
+                    <a href="modificar?id={{ alum.id }}" class="font-medium text-fg-brand hover:underline">Editar</a>
                 </td>
                 <td class="px-6 py-4">
-                    iperez@utleon.edu.mx
+                    <a href="detalles?id={{ alum.id }}" class="font-medium text-fg-brand hover:underline">Detalles</a>
                 </td>
                 <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-fg-brand hover:underline">Editar</a>
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-fg-brand hover:underline">Detalles</a>
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-fg-brand hover:underline">Eliminar</a>
+                    <a href="eliminar?id={{ alum.id }}" class="font-medium text-fg-brand hover:underline">Eliminar</a>
                 </td>
             </tr>
-            <tr class="bg-neutral-primary">
-                <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
-                    Dario
-                </th>
-                <td class="px-6 py-4">
-                    Muñoz
-                </td>
-                <td class="px-6 py-4">
-                    mgomez@alumnos.unimundial.edu.mx
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-fg-brand hover:underline">Editar</a>
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-fg-brand hover:underline">Detalles</a>
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-fg-brand hover:underline">Eliminar</a>
-                </td>
-            </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>
