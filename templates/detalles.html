@@ -1,20 +1,120 @@
-{% extends "layout.html" %} {% block container %} {% import "_macros.html" as macros %}
+{% extends "layout.html" %} 
+{% block container %} 
+{% import "_macros.html" as macros %}
 
-<div>
-    Regresar a Index
+<div class="min-h-screen bg-neutral-primary-soft py-8 mt-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="mb-6">
+            <a href="index" 
+               class="inline-flex items-center gap-2 text-body hover:text-heading transition-colors group">
+                <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                <span class="font-medium">Regresar al listado</span>
+            </a>
+        </div>
+
+        <div class="bg-neutral-primary rounded-xl shadow-lg border border-default overflow-hidden">
+            
+            <div class="bg-gradient-to-r from-brand to-brand-strong px-6 py-4">
+                <div class="flex items-center gap-3">
+                    <div class="bg-white/20 rounded-full p-2">
+                        <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-xl font-bold text-black">Detalles del Alumno</h2>
+                </div>
+            </div>
+
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <div class="bg-neutral-secondary-soft rounded-lg p-5 border border-default">
+                        <div class="flex items-start gap-4">
+                            <div class="flex-shrink-0">
+                                <div class="w-10 h-10 bg-brand/10 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-body mb-1">Nombre</p>
+                                <h3 class="text-lg font-semibold text-heading">{{nombre or 'No especificado'}}</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-neutral-secondary-soft rounded-lg p-5 border border-default">
+                        <div class="flex items-start gap-4">
+                            <div class="flex-shrink-0">
+                                <div class="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-body mb-1">Apellido Paterno</p>
+                                <h3 class="text-lg font-semibold text-heading">{{apaterno or 'No especificado'}}</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-2 bg-neutral-secondary-soft rounded-lg p-5 border border-default">
+                        <div class="flex items-start gap-4">
+                            <div class="flex-shrink-0">
+                                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-body mb-1">Correo Electrónico</p>
+                                <h3 class="text-lg font-semibold text-heading break-all">{{email or 'No especificado'}}</h3>
+                                {% if email %}
+                                <a href="mailto:{{email}}" 
+                                   class="inline-flex items-center gap-1 mt-2 text-sm text-brand hover:text-brand-strong transition-colors">
+                                    Enviar correo
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                    </svg>
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-neutral-secondary-soft px-6 py-4 border-t border-default">
+                <div class="flex flex-wrap gap-3 justify-end">
+                    <a href="index" 
+                       class="inline-flex items-center gap-2 px-4 py-2 bg-neutral-secondary text-body hover:text-heading border border-default rounded-lg hover:bg-neutral-secondary-soft transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        Ver listado completo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<a href="index"></a>
 
-<div>
-    <h5>
-        Nombre: {{nombre}}
-    </h5>
-    <h5>
-        aPaterno: {{apaterno}}
-    </h5>
-    <h5>
-        Email: {{email}}
-    </h5>
-</div>
+<style>
+    .from-brand { --tw-gradient-from: #4f46e5; }
+    .to-brand-strong { --tw-gradient-to: #4338ca; }
+    .bg-amber-100 { background-color: #fef3c7; }
+    .text-amber-600 { color: #d97706; }
+    .bg-blue-100 { background-color: #dbeafe; }
+    .text-blue-600 { color: #2563eb; }
+    .bg-amber-500 { background-color: #f59e0b; }
+    .hover\:bg-amber-600:hover { background-color: #d97706; }
+    .bg-brand\/10 { background-color: rgba(79, 70, 229, 0.1); }
+</style>
 
-{%endblock%}
+{% endblock %}

@@ -5,6 +5,7 @@ from wtforms import validators
 from flask_wtf import FlaskForm
 
 class UserForm(Form):
+    id=IntegerField('id')
     nombre=StringField('Nombre',[
         validators.DataRequired(message='El campo es requerido'),
         validators.length(min=4,max=10,message='Ingrese nombre valido')
