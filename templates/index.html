@@ -16,8 +16,9 @@
         <thead class="text-sm text-body bg-neutral-secondary-soft border-b rounded-base border-default">
             <tr>
                 <th scope="col" class="px-6 py-3 font-medium">NOMBRE</th>
-                <th scope="col" class="px-6 py-3 font-medium">APATERNO</th>
+                <th scope="col" class="px-6 py-3 font-medium">APELLIDOS</th>
                 <th scope="col" class="px-6 py-3 font-medium">CORREO</th>
+                <th scope="col" class="px-6 py-3 font-medium">TELEFONO</th>
                 <th scope="col" class="px-6 py-3 font-medium text-center">EDITAR</th>
                 <th scope="col" class="px-6 py-3 font-medium text-center">DETALLES</th>
                 <th scope="col" class="px-6 py-3 font-medium text-center">ELIMINAR</th>
@@ -30,10 +31,13 @@
                     {{ alum.nombre }}
                 </th>
                 <td class="px-6 py-4 text-body">
-                    {{ alum.aPaterno }}
+                    {{ alum.apellidos }}
                 </td>
                 <td class="px-6 py-4 text-body">
                     {{ alum.email }}
+                </td>
+                <td class="px-6 py-4 text-body">
+                    {{ alum.telefono }}
                 </td>
                 <td class="px-6 py-4 text-center">
                     <a href="modificar?id={{ alum.id }}" 
