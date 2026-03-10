@@ -3,44 +3,48 @@
 
 <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default mt-24">
     <div class="mb-6 flex justify-between items-center">
-        <h2 class="text-xl font-semibold text-heading">Lista de Alumnos</h2>
-        <a href="alumnos" class="inline-flex items-center gap-2 text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none transition-colors">
+        <h2 class="text-xl font-semibold text-heading">Lista de Maestros</h2>
+        <a href="addmaestro" class="inline-flex items-center gap-2 text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none transition-colors">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
             </svg>
-            Nuevo Alumno
+            Nuevo maestro
         </a>
     </div>
 
     <table class="w-full text-sm text-left rtl:text-right text-body">
         <thead class="text-sm text-body bg-neutral-secondary-soft border-b rounded-base border-default">
             <tr>
+                <th scope="col" class="px-6 py-3 font-medium">MATRICULA</th>
                 <th scope="col" class="px-6 py-3 font-medium">NOMBRE</th>
                 <th scope="col" class="px-6 py-3 font-medium">APELLIDOS</th>
-                <th scope="col" class="px-6 py-3 font-medium">CORREO</th>
-                <th scope="col" class="px-6 py-3 font-medium">TELEFONO</th>
+                <th scope="col" class="px-6 py-3 font-medium">ESPECIALIDAD</th>
+                <th scope="col" class="px-6 py-3 font-medium">EMAIL</th>
                 <th scope="col" class="px-6 py-3 font-medium text-center">EDITAR</th>
                 <th scope="col" class="px-6 py-3 font-medium text-center">DETALLES</th>
                 <th scope="col" class="px-6 py-3 font-medium text-center">ELIMINAR</th>
             </tr>
         </thead>
         <tbody>
-            {% for alum in alumno %}
+            {% for maes in maestros %}
             <tr class="bg-neutral-primary border-b border-default hover:bg-neutral-secondary-soft transition-colors">
                 <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
-                    {{ alum.nombre }}
+                    {{ maes.matricula }}
+                </th>
+                <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
+                    {{ maes.nombre }}
                 </th>
                 <td class="px-6 py-4 text-body">
-                    {{ alum.apellidos }}
+                    {{ maes.apellidos }}
                 </td>
+                <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
+                    {{ maes.especialidad }}
+                </th>
                 <td class="px-6 py-4 text-body">
-                    {{ alum.email }}
-                </td>
-                <td class="px-6 py-4 text-body">
-                    {{ alum.telefono }}
+                    {{ maes.email }}
                 </td>
                 <td class="px-6 py-4 text-center">
-                    <a href="modificar?id={{ alum.id }}" 
+                    <a href="modificarMaes?matricula={{ maes.matricula }}"
                        class="inline-flex items-center gap-2 text-white bg-warning hover:bg-warning-strong focus:ring-4 focus:ring-warning-soft font-medium rounded-lg text-sm px-4 py-2 transition-colors"
                        title="Editar alumno">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -50,7 +54,7 @@
                     </a>
                 </td>
                 <td class="px-6 py-4 text-center">
-                    <a href="detalles?id={{ alum.id }}" 
+                    <a href="detallesMaes?matricula={{ maes.matricula }}" 
                        class="inline-flex items-center gap-2 text-white bg-info hover:bg-info-strong focus:ring-4 focus:ring-info-soft font-medium rounded-lg text-sm px-4 py-2 transition-colors"
                        title="Ver detalles">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -60,7 +64,7 @@
                     </a>
                 </td>
                 <td class="px-6 py-4 text-center">
-                    <a href="eliminar?id={{ alum.id }}" 
+                    <a href="eliminarMaes?matricula={{ maes.matricula }}" 
                        class="inline-flex items-center gap-2 text-white bg-danger hover:bg-danger-strong focus:ring-4 focus:ring-danger-soft font-medium rounded-lg text-sm px-4 py-2 transition-colors"
                        title="Eliminar alumno">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -74,9 +78,9 @@
         </tbody>
     </table>
 
-    {% if not alumno %}
+    {% if not maestros %}
     <div class="text-center py-8 text-body">
-        No hay alumnos registrados
+        No hay maestros registrados
     </div>
     {% endif %}
 </div>
