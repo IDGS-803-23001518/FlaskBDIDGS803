@@ -8,7 +8,6 @@ from flask import g
 import forms
 
 from models import db
-from models import Alumnos
 from models import Maestros
 
 @maestros.route('/maestros', methods=['GET','POST'])

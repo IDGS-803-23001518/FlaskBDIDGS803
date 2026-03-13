@@ -40,6 +40,17 @@
                     {{ alum.telefono }}
                 </td>
                 <td class="px-6 py-4 text-center">
+                    <a href="alumnoCursos?id={{ alum.id }}" 
+                       class="inline-flex items-center gap-2 text-white bg-success hover:bg-success-strong focus:ring-4 focus:ring-success-soft font-medium rounded-lg text-sm px-4 py-2 transition-colors"
+                        title="Gestionar alumnos">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5V4H2v16h5m10 0v-6a4 4 0 00-8 0v6m8 0H9"></path>
+                        </svg>
+                        Cursos
+                    </a>
+                </td>
+                <td class="px-6 py-4 text-center">
                     <a href="modificar?id={{ alum.id }}" 
                        class="inline-flex items-center gap-2 text-white bg-warning hover:bg-warning-strong focus:ring-4 focus:ring-warning-soft font-medium rounded-lg text-sm px-4 py-2 transition-colors"
                        title="Editar alumno">

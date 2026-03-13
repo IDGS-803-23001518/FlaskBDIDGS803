@@ -1,0 +1,134 @@
+{% extends "layout.html" %}
+{% block container %}
+
+<div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default mt-12 p-6 pb-40">
+    <div class="mb-6">
+        <a href="cursos" class="inline-flex items-center gap-2 text-body hover:text-heading transition-colors group">
+            <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18">
+                </path>
+            </svg>
+            <span class="font-medium">Regresar a cursos</span>
+        </a>
+    </div>
+    {%with messages=get_flashed_messages()%}
+    {%if messages%}
+    {%for message in messages%}
+    <div class="alert alert-success" style="color:darkorange;">
+        {{message}}
+    </div>
+    {%endfor%}
+    {%endif%}
+    {%endwith%}
+    <div class="mb-6">
+        <h2 class="text-xl font-semibold text-heading">
+            Gestión de Inscripciones
+        </h2>
+    </div>
+
+    <div class="bg-neutral-secondary-soft border border-default rounded-base p-6 mb-6">
+        <h3 class="text-lg font-semibold text-heading mb-2">
+            {{ curso.nombre }}
+        </h3>
+        <p class="text-body mb-2">
+            {{ curso.descripcion }}
+        </p>
+        <p class="text-sm text-body">
+            <strong>Maestro:</strong>
+            {{ curso.maestro.nombre }} {{ curso.maestro.apellidos }}
+        </p>
+    </div>
+
+    <div class="mb-6">
+        <form method="POST" action="{{ url_for('cursos.agregarAlumnoCurso') }}" class="flex items-center gap-3">
+            {{ form.csrf_token }}
+            <input type="hidden" name="curso_id" value="{{curso.id}}">
+            <select name="alumno_id" class="border border-default rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-success-soft focus:border-success">
+                {% for alumno in alumnos %}
+                <option value="{{alumno.id}}">
+                    {{alumno.nombre}} {{alumno.apellidos}}
+                </option>
+                {% endfor %}
+            </select>
+            <button
+                class="inline-flex items-center gap-2 text-white bg-success hover:bg-success-strong focus:ring-4 focus:ring-success-soft shadow-xs font-medium rounded-lg text-sm px-4 py-2.5 transition-colors">
+                Agregar alumno
+            </button>
+        </form>
+    </div>
+
+
+    <table class="w-full text-sm text-left text-body">
+        <thead class="text-sm text-body bg-neutral-secondary-soft border-b border-default">
+            <tr>
+                <th class="px-6 py-3 font-medium">NOMBRE</th>
+                <th class="px-6 py-3 font-medium">EMAIL</th>
+                <th class="px-6 py-3 font-medium text-center">ELIMINAR</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for alumno in curso.alumnos %}
+            <tr class="bg-neutral-primary border-b border-default hover:bg-neutral-secondary-soft transition-colors">
+                <td class="px-6 py-4 font-medium text-heading">
+                    {{ alumno.nombre }} {{ alumno.apellidos }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ alumno.email }}
+                </td>
+                <td class="px-6 py-4 text-center">
+                    <form method="POST" action="{{ url_for('cursos.eliminarAlumnoCurso') }}">
+                        {{ form.csrf_token }}
+                        <input type="hidden" name="curso_id" value="{{curso.id}}">
+                        <input type="hidden" name="alumno_id" value="{{alumno.id}}">
+                        <button
+                            class="inline-flex items-center gap-2 text-white bg-danger hover:bg-danger-strong focus:ring-4 focus:ring-danger-soft font-medium rounded-lg text-sm px-4 py-2 transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6">
+                                </path>
+                            </svg>
+                            Eliminar
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if not curso.alumnos %}
+    <div class="text-center py-8 text-body">
+        No hay alumnos inscritos en este curso
+    </div>
+    {% endif %}
+</div>
+<div class="h-32"><br><br><br><br></div>
+
+<style>
+    .bg-danger {
+        background-color: #ef4444;
+    }
+
+    .bg-danger-strong {
+        background-color: #dc2626;
+    }
+
+    .focus\:ring-danger-soft:focus {
+        --tw-ring-color: rgba(239, 68, 68, 0.2);
+    }
+
+    .bg-success {
+        background-color: #22c55e;
+    }
+
+    .bg-success-strong {
+        background-color: #16a34a;
+    }
+
+    .focus\:ring-success-soft:focus {
+        --tw-ring-color: rgba(34, 197, 94, 0.2);
+    }
+</style>
+
+{% endblock %}

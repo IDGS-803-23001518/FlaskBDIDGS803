@@ -1,0 +1,159 @@
+{% extends "layout.html" %}
+{% block container %}
+{% import "_macros.html" as macros %}
+
+<div class="min-h-screen bg-neutral-primary-soft py-8 mt-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="mb-3">
+            <a href="cursos"
+                class="inline-flex items-center gap-2 text-body hover:text-heading transition-colors group">
+                <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                <span class="font-medium">Regresar al listado</span>
+            </a>
+        </div>
+
+        <div class="bg-neutral-primary rounded-xl shadow-lg border border-default overflow-hidden">
+
+            <div class="bg-gradient-to-r from-brand to-brand-strong px-6 py-4">
+                <div class="flex items-center gap-3">
+                    <div class="bg-white/20 rounded-full p-2">
+                        <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-xl font-bold text-black">Detalles del Curso</h2>
+                </div>
+            </div>
+
+            <div class="p-6">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-heading mb-4">
+                            Información del Curso
+                        </h3>
+
+                        <div class="space-y-4">
+
+                            <div class="bg-neutral-secondary-soft rounded-lg p-5 border border-default">
+                                <p class="text-sm font-medium text-body mb-1">Nombre del curso</p>
+                                <h3 class="text-lg font-semibold text-heading">
+                                    {{nombre or 'No especificado'}}
+                                </h3>
+                            </div>
+
+                            <div class="bg-neutral-secondary-soft rounded-lg p-5 border border-default">
+                                <p class="text-sm font-medium text-body mb-1">Descripción</p>
+                                <h3 class="text-lg font-semibold text-heading">
+                                    {{descripcion or 'No especificado'}}
+                                </h3>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-heading mb-4">
+                            Información del Maestro Encargado
+                        </h3>
+
+                        <div class="space-y-4">
+
+                            <div class="bg-neutral-secondary-soft rounded-lg p-5 border border-default">
+                                <p class="text-sm font-medium text-body mb-1">Nombre</p>
+                                <h3 class="text-lg font-semibold text-heading">
+                                    {{nombreM or 'No especificado'}}
+                                </h3>
+                            </div>
+
+                            <div class="bg-neutral-secondary-soft rounded-lg p-5 border border-default">
+                                <p class="text-sm font-medium text-body mb-1">Apellidos</p>
+                                <h3 class="text-lg font-semibold text-heading">
+                                    {{apellidosM or 'No especificado'}}
+                                </h3>
+                            </div>
+
+                            <div class="bg-neutral-secondary-soft rounded-lg p-5 border border-default">
+                                <p class="text-sm font-medium text-body mb-1">Correo</p>
+                                <h3 class="text-lg font-semibold text-heading break-all">
+                                    {{emailM or 'No especificado'}}
+                                </h3>
+                            </div>
+
+                            <div class="bg-neutral-secondary-soft rounded-lg p-5 border border-default">
+                                <p class="text-sm font-medium text-body mb-1">Matrícula</p>
+                                <h3 class="text-lg font-semibold text-heading">
+                                    {{matriculaM or 'No especificado'}}
+                                </h3>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="bg-neutral-secondary-soft px-6 py-4 border-t border-default">
+                <div class="flex flex-wrap gap-3 justify-end">
+                    <a href="cursos"
+                        class="inline-flex items-center gap-2 px-4 py-2 bg-neutral-secondary text-body hover:text-heading border border-default rounded-lg hover:bg-neutral-secondary-soft transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        Ver listado completo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .from-brand {
+        --tw-gradient-from: #4f46e5;
+    }
+
+    .to-brand-strong {
+        --tw-gradient-to: #4338ca;
+    }
+
+    .bg-amber-100 {
+        background-color: #fef3c7;
+    }
+
+    .text-amber-600 {
+        color: #d97706;
+    }
+
+    .bg-blue-100 {
+        background-color: #dbeafe;
+    }
+
+    .text-blue-600 {
+        color: #2563eb;
+    }
+
+    .bg-amber-500 {
+        background-color: #f59e0b;
+    }
+
+    .hover\:bg-amber-600:hover {
+        background-color: #d97706;
+    }
+
+    .bg-brand\/10 {
+        background-color: rgba(79, 70, 229, 0.1);
+    }
+</style>
+
+{% endblock %}
